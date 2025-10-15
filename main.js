@@ -1,13 +1,13 @@
 import * as THREE from 'https://unpkg.com/three@0.154.0/build/three.module.js';
 
-// Crear escena, cámara y renderizador
+// Crea escena, cámara y renderizador
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// Crear tres cubos con colores distintos
+// Crea los tres cubos con colores distintos
 const geometria = new THREE.BoxGeometry(1, 1, 1);
 const materiales = [
   new THREE.MeshStandardMaterial({ color: 0xffa500  }), // naranja
@@ -21,7 +21,7 @@ const cubos = [
   new THREE.Mesh(geometria, materiales[2])
 ];
 
-// Posicionar los cubos centrados horizontalmente
+// Posiciona los cubos centrados con el eje x
 cubos[0].position.x = -2;
 cubos[1].position.x = 0;
 cubos[2].position.x = 2;
@@ -52,10 +52,10 @@ function animate() {
   renderer.render(scene, camera);
 }
 
-// Ejecutar animación
+// Ejecuta animación
 renderer.setAnimationLoop(animate);
 
-// Ajustar tamaño al cambiar ventana
+// Ajusta tamaño al cambiar ventana
 window.addEventListener('resize', () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
